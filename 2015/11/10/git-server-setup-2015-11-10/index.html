@@ -37,7 +37,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="git,web,work-tree," />
 
 
 
@@ -53,22 +53,22 @@
 
 
 
-<meta name="description" content="Git 共用端1git init --bare &amp;lt;專案名稱.git&amp;gt;
+<meta name="description" content="建立 Git 共用端1git init --bare &amp;lt;專案名稱.git&amp;gt;
 設定 Git 共用端1vim &amp;lt;專案名稱.git&amp;gt;/hooks/post-receive
-1234#!/bin/shWEB_DIR=&quot;/home/zhong666/Sites&quot;git --work-tree=$&amp;#123;WEB_DIR&amp;#125; clean -fdgit --work-tree=$&amp;#">
+1234#!/bin/shWEB_DIR=&quot;/home/zhong666/Sites&quot;git --work-tree=$&amp;#123;WEB_DIR&amp;#125; clean -fdgit --work-tree=">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git Server 架設">
 <meta property="og:url" content="http://zhong666.github.io/2015/11/10/git-server-setup-2015-11-10/index.html">
 <meta property="og:site_name" content="阿中程式筆記">
-<meta property="og:description" content="Git 共用端1git init --bare &amp;lt;專案名稱.git&amp;gt;
+<meta property="og:description" content="建立 Git 共用端1git init --bare &amp;lt;專案名稱.git&amp;gt;
 設定 Git 共用端1vim &amp;lt;專案名稱.git&amp;gt;/hooks/post-receive
-1234#!/bin/shWEB_DIR=&quot;/home/zhong666/Sites&quot;git --work-tree=$&amp;#123;WEB_DIR&amp;#125; clean -fdgit --work-tree=$&amp;#">
-<meta property="og:updated_time" content="2015-11-10T07:37:38.000Z">
+1234#!/bin/shWEB_DIR=&quot;/home/zhong666/Sites&quot;git --work-tree=$&amp;#123;WEB_DIR&amp;#125; clean -fdgit --work-tree=">
+<meta property="og:updated_time" content="2015-11-10T08:00:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git Server 架設">
-<meta name="twitter:description" content="Git 共用端1git init --bare &amp;lt;專案名稱.git&amp;gt;
+<meta name="twitter:description" content="建立 Git 共用端1git init --bare &amp;lt;專案名稱.git&amp;gt;
 設定 Git 共用端1vim &amp;lt;專案名稱.git&amp;gt;/hooks/post-receive
-1234#!/bin/shWEB_DIR=&quot;/home/zhong666/Sites&quot;git --work-tree=$&amp;#123;WEB_DIR&amp;#125; clean -fdgit --work-tree=$&amp;#">
+1234#!/bin/shWEB_DIR=&quot;/home/zhong666/Sites&quot;git --work-tree=$&amp;#123;WEB_DIR&amp;#125; clean -fdgit --work-tree=">
 
 
 
@@ -233,23 +233,36 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="Git_共用端">Git 共用端</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init --bare &lt;專案名稱.git&gt;</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><h2 id="建立_Git_共用端">建立 Git 共用端</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init --bare &lt;專案名稱.git&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="設定_Git_共用端">設定 Git 共用端</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &lt;專案名稱.git&gt;/hooks/post-receive</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line">WEB_DIR=<span class="string">"/home/zhong666/Sites"</span></span><br><span class="line">git --work-tree=<span class="variable">$&#123;WEB_DIR&#125;</span> clean -fd</span><br><span class="line">git --work-tree=<span class="variable">$&#123;WEB_DIR&#125;</span> checkout --force</span><br></pre></td></tr></table></figure>
-<p>增加執行權限<br>chmod +x post-receive</p>
+<p>增加執行權限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure></p>
+<h2 id="完成">完成</h2><p>接下來就可以由一般取得git repo一樣</p>
+<h5 id="從遠端克隆">從遠端克隆</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> user@ip:&lt;專案名稱.git&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="從本機加入">從本機加入</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add remote origin user@ip:&lt;專案名稱.git&gt;</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag">#git</a>
+          
+            <a href="/tags/web/" rel="tag">#web</a>
+          
+            <a href="/tags/work-tree/" rel="tag">#work-tree</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/09/LNMP-setup-2015-11-09/" rel="next" title="LNMP 架設筆記">
-                <i class="fa fa-chevron-left"></i> LNMP 架設筆記
+              <a href="/2015/11/09/LNMP-setup-2015-11-09/" rel="next" title="LNMP 架設">
+                <i class="fa fa-chevron-left"></i> LNMP 架設
               </a>
             
           </div>
@@ -336,7 +349,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
@@ -368,7 +381,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git_共用端"><span class="nav-number">1.</span> <span class="nav-text">Git 共用端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設定_Git_共用端"><span class="nav-number">2.</span> <span class="nav-text">設定 Git 共用端</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#建立_Git_共用端"><span class="nav-number">1.</span> <span class="nav-text">建立 Git 共用端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設定_Git_共用端"><span class="nav-number">2.</span> <span class="nav-text">設定 Git 共用端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成"><span class="nav-number">3.</span> <span class="nav-text">完成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#從遠端克隆"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">從遠端克隆</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#從本機加入"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">從本機加入</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
