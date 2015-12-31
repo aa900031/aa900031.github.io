@@ -37,7 +37,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="bridge,docker,ip,pipework,ubuntu," />
+  <meta name="keywords" content="tools,web,website," />
 
 
 
@@ -53,46 +53,19 @@
 
 
 
-<meta name="description" content="流程概述
-安裝 Docker
-安裝 pipework
-設置 bridge
-刪除 docker0
-設置 Docker 預設 bridge
-建立 Container (ex: nginx)
-執行 pipework
-
-Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
-安裝 pipework123git clone https://g">
+<meta name="description" content="Java
+json轉pojo jsonschema2pojo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker 橋接實體網路&pipework">
-<meta property="og:url" content="http://zhong666.github.io/2015/12/09/docker-bridge-pipework/index.html">
+<meta property="og:title" content="工具網站">
+<meta property="og:url" content="http://zhong666.github.io/2015/12/31/tools-web/index.html">
 <meta property="og:site_name" content="阿中程式筆記">
-<meta property="og:description" content="流程概述
-安裝 Docker
-安裝 pipework
-設置 bridge
-刪除 docker0
-設置 Docker 預設 bridge
-建立 Container (ex: nginx)
-執行 pipework
-
-Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
-安裝 pipework123git clone https://g">
-<meta property="og:updated_time" content="2015-12-08T18:22:42.000Z">
+<meta property="og:description" content="Java
+json轉pojo jsonschema2pojo">
+<meta property="og:updated_time" content="2015-12-31T04:47:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker 橋接實體網路&pipework">
-<meta name="twitter:description" content="流程概述
-安裝 Docker
-安裝 pipework
-設置 bridge
-刪除 docker0
-設置 Docker 預設 bridge
-建立 Container (ex: nginx)
-執行 pipework
-
-Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
-安裝 pipework123git clone https://g">
+<meta name="twitter:title" content="工具網站">
+<meta name="twitter:description" content="Java
+json轉pojo jsonschema2pojo">
 
 
 
@@ -104,7 +77,7 @@ Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
   };
 </script>
 
-  <title> Docker 橋接實體網路&pipework | 阿中程式筆記 </title>
+  <title> 工具網站 | 阿中程式筆記 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -233,7 +206,7 @@ Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
             
             
               
-                Docker 橋接實體網路&pipework
+                工具網站
               
             
           </h1>
@@ -242,8 +215,8 @@ Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
         <div class="post-meta">
           <span class="post-time">
             發表於
-            <time itemprop="dateCreated" datetime="2015-12-09T02:02:46+08:00" content="2015-12-09">
-              2015-12-09
+            <time itemprop="dateCreated" datetime="2015-12-31T12:43:40+08:00" content="2015-12-31">
+              2015-12-31
             </time>
           </span>
 
@@ -253,8 +226,8 @@ Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/12/09/docker-bridge-pipework/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/09/docker-bridge-pipework/" itemprop="commentsCount"></span>
+              <a href="/2015/12/31/tools-web/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/31/tools-web/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -273,30 +246,9 @@ Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
       
 
       
-        <span itemprop="articleBody"><h2 id="流程概述">流程概述</h2><ol>
-<li>安裝 Docker</li>
-<li>安裝 pipework</li>
-<li>設置 bridge</li>
-<li>刪除 docker0</li>
-<li>設置 Docker 預設 bridge</li>
-<li>建立 Container (ex: nginx)</li>
-<li>執行 pipework</li>
-</ol>
-<h2 id="Ubuntu_安裝_Docker">Ubuntu 安裝 Docker</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="operator">-s</span>SL https://get.docker.com/ | sudo sh</span><br></pre></td></tr></table></figure>
-<h2 id="安裝_pipework">安裝 pipework</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/jpetazzo/pipework.git</span><br><span class="line">sudo cp -rp pipework/pipework /usr/<span class="built_in">local</span>/bin/</span><br><span class="line">sudo apt-get install arping bridge-utils -y</span><br></pre></td></tr></table></figure>
-<h2 id="設置_Bridge">設置 Bridge</h2><figure class="highlight cpp"><figcaption><span>/etc/network/interfaces</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> eth0</span><br><span class="line">iface eth0 inet manual</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> br0</span><br><span class="line">iface br0 inet <span class="keyword">static</span></span><br><span class="line">    address <span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">    netmask <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line">    gateway <span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">    bridge_ports eth0</span><br><span class="line">    bridge_stp off</span><br><span class="line">    bridge_fd <span class="number">0</span></span><br><span class="line">    bridge_maxwait <span class="number">0</span></span><br><span class="line">    dns-nameservers <span class="number">8.8</span><span class="number">.8</span><span class="number">.8</span></span><br></pre></td></tr></table></figure>
-<p>啟用 bridge<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifup br0</span><br></pre></td></tr></table></figure></p>
-<h2 id="刪除_docker0">刪除 docker0</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service docker stop</span><br><span class="line">sudo ip link <span class="built_in">set</span> dev docker0 down</span><br><span class="line">sudo brctl delbr docker0</span><br></pre></td></tr></table></figure>
-<h2 id="設置_Docker_預設_bridge">設置 Docker 預設 bridge</h2><figure class="highlight ini"><figcaption><span>/etc/default/docker</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">DOCKER_OPTS=<span class="value"><span class="string">"-b=br0"</span></span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start</span><br></pre></td></tr></table></figure>
-<h2 id="建立_Container_(ex:_nginx)">建立 Container (ex: nginx)</h2><ol>
-<li>–net=<strong><em>none</em></strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --net=none --name Container名稱 -v ~/docker/nginx01/html:/usr/share/nginx/html:ro <span class="operator">-d</span> nginx)</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="執行_pipework">執行 pipework</h2><ol>
-<li>預設 pipework 是建立 eth1 網卡，所以必須指定網卡名稱<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipework br0 -i eth0 &lt;Container名稱&gt; <span class="number">192.168</span>.<span class="number">1.100</span>/<span class="number">24</span>@<span class="number">192.168</span>.<span class="number">1.1</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+        <span itemprop="articleBody"><h2 id="Java">Java</h2><ul>
+<li>json轉pojo <a href="http://www.jsonschema2pojo.org" target="_blank" rel="external">jsonschema2pojo</a></li>
+</ul>
 </span>
       
     </div>
@@ -305,15 +257,11 @@ Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
       
         <div class="post-tags">
           
-            <a href="/tags/bridge/" rel="tag">#bridge</a>
+            <a href="/tags/tools/" rel="tag">#tools</a>
           
-            <a href="/tags/docker/" rel="tag">#docker</a>
+            <a href="/tags/web/" rel="tag">#web</a>
           
-            <a href="/tags/ip/" rel="tag">#ip</a>
-          
-            <a href="/tags/pipework/" rel="tag">#pipework</a>
-          
-            <a href="/tags/ubuntu/" rel="tag">#ubuntu</a>
+            <a href="/tags/website/" rel="tag">#website</a>
           
         </div>
       
@@ -322,17 +270,13 @@ Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/10/git-server-setup-2015-11-10/" rel="next" title="Git Server 架設">
-                <i class="fa fa-chevron-left"></i> Git Server 架設
+              <a href="/2015/12/09/docker-bridge-pipework/" rel="next" title="Docker 橋接實體網路&pipework">
+                <i class="fa fa-chevron-left"></i> Docker 橋接實體網路&pipework
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/12/31/tools-web/" rel="prev" title="工具網站">
-                工具網站 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -450,7 +394,7 @@ Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#流程概述"><span class="nav-number">1.</span> <span class="nav-text">流程概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu_安裝_Docker"><span class="nav-number">2.</span> <span class="nav-text">Ubuntu 安裝 Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝_pipework"><span class="nav-number">3.</span> <span class="nav-text">安裝 pipework</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設置_Bridge"><span class="nav-number">4.</span> <span class="nav-text">設置 Bridge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#刪除_docker0"><span class="nav-number">5.</span> <span class="nav-text">刪除 docker0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#設置_Docker_預設_bridge"><span class="nav-number">6.</span> <span class="nav-text">設置 Docker 預設 bridge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立_Container_(ex:_nginx)"><span class="nav-number">7.</span> <span class="nav-text">建立 Container (ex: nginx)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#執行_pipework"><span class="nav-number">8.</span> <span class="nav-text">執行 pipework</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java"><span class="nav-number">1.</span> <span class="nav-text">Java</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -510,9 +454,9 @@ Ubuntu 安裝 Docker1curl -sSL https://get.docker.com/ | sudo sh
 
     <script type="text/javascript">
       var disqus_shortname = 'aa900031';
-      var disqus_identifier = '2015/12/09/docker-bridge-pipework/';
-      var disqus_title = 'Docker 橋接實體網路&pipework';
-      var disqus_url = 'http://zhong666.github.io/2015/12/09/docker-bridge-pipework/';
+      var disqus_identifier = '2015/12/31/tools-web/';
+      var disqus_title = '工具網站';
+      var disqus_url = 'http://zhong666.github.io/2015/12/31/tools-web/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
